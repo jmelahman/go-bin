@@ -16,6 +16,8 @@ jobs:
           fetch-depth: 0
 
       - name: Check for new Go release and tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LATEST_GO=$(curl -sf 'https://go.dev/dl/?mode=json' | jq -r '.[0].version' | sed 's/^go//')
           if [ -z "${LATEST_GO}" ]; then
@@ -34,3 +36,4 @@ jobs:
           echo "New Go version detected, creating tag ${TAG}"
           git tag "${TAG}"
           git push origin "${TAG}"
+          gh workflow run release.yml --ref "${TAG}"
