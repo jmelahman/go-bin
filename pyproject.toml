@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "go-bin"
 description = "Prebuilt golang binary"
 license = "MIT"
-license-files = ["LICENSE"]
+license-files = ["LICENSE", "go/LICENSE"]
 authors = [{ name = "Jamison Lahman", email = "jamison@lahman.dev" }]
 readme = "README.md"
 requires-python = ">=3.6"
